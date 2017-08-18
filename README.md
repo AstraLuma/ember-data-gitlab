@@ -1,87 +1,47 @@
-# Ember Data Github
+# Ember Data Gitlab
 
-[![Build Status](https://travis-ci.org/elwayman02/ember-data-github.svg?branch=master)](https://travis-ci.org/elwayman02/ember-data-github)
-[![Ember Observer Score](http://emberobserver.com/badges/ember-data-github.svg)](http://emberobserver.com/addons/ember-data-github)
-[![Code Climate](https://codeclimate.com/github/elwayman02/ember-data-github/badges/gpa.svg)](https://codeclimate.com/github/elwayman02/ember-data-github)
+[![Build Status](https://travis-ci.org/astronouth7303/ember-data-gitlab.svg?branch=master)](https://travis-ci.org/astronouth7303/ember-data-gitlab)
+[![Ember Observer Score](http://emberobserver.com/badges/ember-data-gitlab.svg)](http://emberobserver.com/addons/ember-data-gitlab)
+[![Code Climate](https://codeclimate.com/github/astronouth7303/ember-data-gitlab/badges/gpa.svg)](https://codeclimate.com/gitlab/astronouth7303/ember-data-gitlab)
 
-Ember Data abstraction for the [GitHub API](https://developer.github.com/v3/).
+Ember Data abstraction for the [GitLab API](https://docs.gitlab.com/ce/api/).
 
 ## Installation
 
 ```
-ember install ember-data-github
+ember install ember-data-gitlab
 ```
 
 ## Usage
 
-You need to choose how you wish to authenticate your GitHub requests using OAuth. `ember-data-github` provides a simple
+You need to choose how you wish to authenticate your GitLab requests using OAuth. `ember-data-gitlab` provides a simple
 and direct mechanism that is specific to itself. Alternatively, you can use a more general authentication framework like
 `ember-simple-auth`.
 
 ### Authenticating Directly
 
-If you already have a token to use the OAuth endpoints, such as a *Personal access token*, you must set the property
-named `githubAccessToken` on `github-session` service with the currently logged in user's GitHub access token.
+TODO
 
-### Authenticating with `ember-simple-auth`
-
-If you are using [ember-simple-auth](http://ember-simple-auth.com/) (ESA) to authenticate, perhaps with
-[torii](http://vestorly.github.io/torii) and ESA's `torii-provider`, you can authenticate by creating a github
-authorizer and extending `ember-data-github`'s adapter for each model you use. See the respective addon docs and
-[GitHub's OAuth docs](https://developer.github.com/v3/oauth/) to set it up.
-
-
-Once you have a token, the authorizer will look like
+### Retrieving GitLab Data
+The following examples show how to retrieve each supported GitLab entity as you might use it in your `model` hook.
 ```js
-// app/authorizers/github.js
-
-import Ember from 'ember';
-import Base from 'ember-simple-auth/authorizers/base';
-
-export default Base.extend({
-  session: Ember.inject.service(),
-  authorize(sessionData, block) {
-    if (this.get('session.isAuthenticated') && !Ember.isEmpty(sessionData.access_token)) {
-      block('Authorization', `token ${sessionData.access_token}`);
-    }
-  }
-});
-```
-assuming `access_token` is the name of the property containing the token. This automatically injects the `Authorization`
-header into the API requests using ESA mechanisms.
-
-An extended adapter for `github-user` would look like
-```js
-// app/adapters/github-user.js
-
-import GitHubUserAdapter from 'ember-data-github/adapters/github-user';
-import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
-
-export default GitHubUserAdapter.extend(DataAdapterMixin, {
-  authorizer: 'authorizer:github'
-});
-```
-
-### Retrieving GitHub Data
-The following examples show how to retrieve each supported GitHub entity as you might use it in your `model` hook.
-```js
-this.get('store').findRecord('github-user', '#'); // get the current user
-this.get('store').findRecord('github-user', 'jimmay5469'); // get a user
-this.get('store').findRecord('github-repository', 'jimmay5469/old-hash'); // get a repository
-this.get('store').findRecord('github-branch', 'jimmay5469/old-hash/branches/master'); // get a branch
-this.get('store').queryRecord('github-branch', { repo: 'jimmay5469/old-hash', branch: 'master' }); // get a specific branch
-this.get('store').query('github-branch', { repo: 'jimmay5469/old-hash' }); // get a repo's branches
-this.get('store').queryRecord('github-release', { repo: 'jimmay5469/old-hash', releaseId: 1 }); // get a specific release
-this.get('store').query('github-release', { repo: 'jimmay5469/old-hash' }); // get a repo's releases
-this.get('store').queryRecord('github-blob', { repo: 'jimmay5469/old-hash', sha: '47c5438403ca875f170db2aa07d1bfa3689406e3' }); // get a file's contents
+this.get('store').findRecord('gitlab-user', '#'); // get the current user
+this.get('store').findRecord('gitlab-user', 'jimmay5469'); // get a user
+this.get('store').findRecord('gitlab-repository', 'jimmay5469/old-hash'); // get a repository
+this.get('store').findRecord('gitlab-branch', 'jimmay5469/old-hash/branches/master'); // get a branch
+this.get('store').queryRecord('gitlab-branch', { repo: 'jimmay5469/old-hash', branch: 'master' }); // get a specific branch
+this.get('store').query('gitlab-branch', { repo: 'jimmay5469/old-hash' }); // get a repo's branches
+this.get('store').queryRecord('gitlab-release', { repo: 'jimmay5469/old-hash', releaseId: 1 }); // get a specific release
+this.get('store').query('gitlab-release', { repo: 'jimmay5469/old-hash' }); // get a repo's releases
+this.get('store').queryRecord('gitlab-blob', { repo: 'jimmay5469/old-hash', sha: '47c5438403ca875f170db2aa07d1bfa3689406e3' }); // get a file's contents
 ```
 
 ## Contributing
 
 ### Installation
 
-* `git clone git@github.com:elwayman02/ember-data-github.git`
-* `cd ember-data-github`
+* `git clone git@gitlab.com:astronouth7303/ember-data-gitlab.git`
+* `cd ember-data-gitlab`
 * `npm install`
 * `bower install`
 

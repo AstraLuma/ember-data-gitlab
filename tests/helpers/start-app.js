@@ -2,7 +2,7 @@ import Ember from 'ember';
 import Application from '../../app';
 import config from '../../config/environment';
 
-import GithubAdapter from 'ember-data-github/adapters/github';
+import GitlabAdapter from 'ember-data-gitlab/adapters/gitlab';
 
 import UserFactory from './factories/user';
 import OrganizationFactory from './factories/organization';
@@ -12,13 +12,13 @@ import ReleaseFactory from './factories/release';
 import BlobFactory from './factories/blob';
 import TreeFactory from './factories/trees';
 
-import './custom-helpers/assert-github-branch-ok';
-import './custom-helpers/assert-github-organization-ok';
-import './custom-helpers/assert-github-repository-ok';
-import './custom-helpers/assert-github-user-ok';
-import './custom-helpers/assert-github-release-ok';
-import './custom-helpers/assert-github-blob-ok';
-import './custom-helpers/assert-github-tree-ok';
+import './custom-helpers/assert-gitlab-branch-ok';
+import './custom-helpers/assert-gitlab-organization-ok';
+import './custom-helpers/assert-gitlab-repository-ok';
+import './custom-helpers/assert-gitlab-user-ok';
+import './custom-helpers/assert-gitlab-release-ok';
+import './custom-helpers/assert-gitlab-blob-ok';
+import './custom-helpers/assert-gitlab-tree-ok';
 
 const { merge, run } = Ember;
 
@@ -43,10 +43,10 @@ export default function startApp(attrs) {
   TreeFactory.defineTree();
 
   // Pretender doesn't work with fully qualified URLs
-  GithubAdapter.reopen({
+  GitlabAdapter.reopen({
     // Caution: overriding ember-data private api
     ajax(url, type, options) {
-      url = url.replace('https://api.github.com', '');
+      url = url.replace('https://api.gitlab.com', '');
       return this._super(url, type, options);
     }
   });

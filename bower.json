@@ -1,5 +1,5 @@
 {
-  "name": "ember-data-github",
+  "name": "ember-data-gitlab",
   "dependencies": {},
   "devDependencies": {
     "pretender": "~1.0.0",

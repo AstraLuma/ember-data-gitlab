@@ -1,20 +1,20 @@
 {
-  "name": "ember-data-github",
+  "name": "ember-data-gitlab",
   "version": "0.3.1",
-  "description": "Ember Data abstraction for the GitHub API",
+  "description": "Ember Data abstraction for the GitLab API",
   "keywords": [
     "ember-addon",
     "ember-data",
-    "github",
+    "gitlab",
     "api"
   ],
   "license": "MIT",
-  "author": "Jordan Hawker <hawker.jordan@gmail.com> (http://www.JordanHawker.com)",
+  "author": "Jamie Bliss <astronouth7303@gmail.com> (http://www.astro73.com)",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "git@github.com:elwayman02/ember-data-github",
+  "repository": "git@github.com:astronouth7303/ember-data-gitlab",
   "scripts": {
     "build": "ember build",
     "start": "ember server",

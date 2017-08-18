@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-data-github'
+  name: 'ember-data-gitlab'
 };

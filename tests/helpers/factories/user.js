@@ -19,10 +19,10 @@ export default {
       .attr('created_at', SAMPLE_DATE)
       .attr('updated_at', SAMPLE_DATE)
       .sequence('repos_url', function (i) {
-        return `https://api.github.com/users/user${i}/repos`;
+        return `https://api.gitlab.com/users/user${i}/repos`;
       })
       .sequence('url', function (i) {
-        return `https://api.github.com/users/user${i}`;
+        return `https://api.gitlab.com/users/user${i}`;
       });
   }
 };
